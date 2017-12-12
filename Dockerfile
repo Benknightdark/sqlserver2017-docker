@@ -1,3 +1,5 @@
+FROM microsoft/mssql-server-linux
+COPY backup var/opt/mssql/data 
 #FROM ubuntu:16.04 
 #EXPOSE 1433
 #CMD /opt/mssql/bin/sqlservr
