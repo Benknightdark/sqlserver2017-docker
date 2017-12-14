@@ -10,11 +10,30 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 #RUN 
 RUN add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
 RUN add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
-COPY ./install /
-RUN chmod +x setup.sh
-RUN ./setup.sh
-RUN CMD /opt/mssql/bin/sqlservr 
+RUN export MSSQL_SA_PASSWORD='P@ssw0rd'
+RUN export MSSQL_PID='evaluation'
+RUN export SQL_INSTALL_AGENT='y'
+RUN export SQL_INSTALL_USER='ben'
+RUN export apt-get update -y
+RUN apt-get install -y mssql-server
+RUN MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
+     MSSQL_PID=$MSSQL_PID \
+     /opt/mssql/bin/mssql-conf -n setup accept-eula
+RUN ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
+RUN echo PATH="$PATH:/opt/mssql-tools/bin" >> ~/.bash_profile \
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN apt-get install -y mssql-server-agent
+RUN apt-get install -y mssql-server-fts
+RUN ufw allow 1433/tcp \
+ ufw reload
+RUN ufw allow 1433/tcp \
+ RUN command
+#COPY ./install /
+#RUN chmod +x setup.sh
+#RUN ./setup.sh
 EXPOSE 1433
+RUN CMD /opt/mssql/bin/sqlservr 
+#
 #CMD /opt/mssql/bin/sqlservr
 #RUN  apt-get update
 #RUN apt-get update && apt-get install -y  apt-utils
