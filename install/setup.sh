@@ -33,8 +33,8 @@ fi
 #repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
  #add-apt-repository "${repoargs}"
 
-#echo Running apt-get update -y...
- #apt-get update -y
+echo Running apt-get update -y...
+ apt-get update -y
 
 echo Installing SQL Server...
  apt-get install -y mssql-server
