@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
+RUN CMD /opt/mssql/bin/sqlservr 
 #EXPOSE 1433
 #CMD /opt/mssql/bin/sqlservr
 #RUN  apt-get update
@@ -32,4 +33,3 @@ RUN ./setup.sh
 #RUN  ACCEPT_EULA='Y' MSSQL_PID='Developer' MSSQL_SA_PASSWORD='<YourStrong!Passw0rd>' MSSQL_TCP_PORT=1234 /opt/mssql/bin/mssql-conf setup
 #RUN  /opt/mssql/bin/sqlservr-setup 
 #RUN  apt-get install nano
-#RUN CMD /opt/mssql/bin/sqlservr 
