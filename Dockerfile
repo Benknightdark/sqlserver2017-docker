@@ -1,6 +1,6 @@
 FROM ubuntu:16.04 
 RUN apt-get update
-RUN apt-get install curl
+RUN apt-get install -y curl
 COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
