@@ -6,11 +6,9 @@ RUN apt-get install -y curl
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y ca-certificates
 RUN dpkg -S add-apt-repository
-RUN curl https://packages.microsoft.com/keys/microsoft.asc |  apt-key add -  \
- repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"  \
- add-apt-repository "${repoargs}"  \
- repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"  \
- add-apt-repository "${repoargs}"
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+#RUN 
+RUN  add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && sudo apt-get update
 COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
@@ -33,9 +31,7 @@ EXPOSE 1433
 #RUN curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list
 #RUN tee /etc/apt/sources.list.d/mssql-server.list
 #RUN apt-get update
-#RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-#RUN 
-#RUN  add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && sudo apt-get update
+
 #RUN apt-get install -y mssql-server
 #RUN wget https://packages.microsoft.com/ubuntu/16.04/mssql-server/pool/main/m/mssql-server/mssql-server_14.0.1.246-6_amd64.deb
 
