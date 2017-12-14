@@ -14,7 +14,7 @@ RUN export MSSQL_SA_PASSWORD='P@ssw0rd'
 RUN export MSSQL_PID='evaluation'
 RUN export SQL_INSTALL_AGENT='y'
 RUN export SQL_INSTALL_USER='ben'
-RUN export apt-get update -y
+RUN  apt-get update -y
 RUN apt-get install -y mssql-server
 RUN MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
      MSSQL_PID=$MSSQL_PID \
