@@ -21,7 +21,7 @@ dpkg -i packages-microsoft-prod_1.0-1-xenial.deb
 
 # Install mssql-tools package
 #
-apt-get update
+apt-get update -y
 ACCEPT_EULA=Y apt-get -y --no-install-recommends install mssql-tools
 
 # Remove files from /tmp
