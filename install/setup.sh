@@ -26,12 +26,12 @@ then
   exit 1
 fi
 
-#echo Adding Microsoft repositories...
- #curl https://packages.microsoft.com/keys/microsoft.asc |  apt-key add -
-#repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
- #add-apt-repository "${repoargs}"
-#repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
- #add-apt-repository "${repoargs}"
+echo Adding Microsoft repositories...
+ curl https://packages.microsoft.com/keys/microsoft.asc |  apt-key add -
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+ add-apt-repository "${repoargs}"
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
+ add-apt-repository "${repoargs}"
 
 #echo Running apt-get update -y...
  #apt-get update -y
