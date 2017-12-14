@@ -14,11 +14,11 @@ MSSQL_PID='evaluation'
 SQL_INSTALL_AGENT='y'
 
 # Install SQL Server Full Text Search (optional)
-# SQL_INSTALL_FULLTEXT='y'
+ SQL_INSTALL_FULLTEXT='y'
 
 # Create an additional user with sysadmin privileges (optional)
-# SQL_INSTALL_USER='<Username>'
-# SQL_INSTALL_USER_PASSWORD='<YourStrong!Passw0rd>'
+ SQL_INSTALL_USER='Ben'
+ SQL_INSTALL_USER_PASSWORD='P@ssw0rd'
 
 if [ -z $MSSQL_SA_PASSWORD ]
 then
@@ -26,12 +26,12 @@ then
   exit 1
 fi
 
-#echo Adding Microsoft repositories...
- #curl https://packages.microsoft.com/keys/microsoft.asc |  apt-key add -
-#repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
- #add-apt-repository "${repoargs}"
-#repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
- #add-apt-repository "${repoargs}"
+echo Adding Microsoft repositories...
+ curl https://packages.microsoft.com/keys/microsoft.asc |  apt-key add -
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+ add-apt-repository "${repoargs}"
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
+ add-apt-repository "${repoargs}"
 
 echo Running apt-get update -y...
  apt-get update -y
