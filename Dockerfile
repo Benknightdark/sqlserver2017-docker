@@ -1,11 +1,10 @@
 FROM ubuntu:16.04 
 RUN apt-get update
 RUN apt-get install -y curl
-RUN apt-get install -y add-apt-repository
+#RUN apt-get install -y add-apt-repository
 RUN apt-get install -y apt-transport-https
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y ca-certificates
-RUN apt-get install -y software-properties-common
 COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
