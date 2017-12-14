@@ -6,8 +6,7 @@ RUN apt-get install -y curl
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y ca-certificates
 RUN dpkg -S add-apt-repository
-
-RUN COPY ./install / 
+COPY ./install / 
 RUN chmod +x setup.sh
 RUN ./setup.sh
 EXPOSE 1433
