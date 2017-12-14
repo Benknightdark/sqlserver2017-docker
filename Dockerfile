@@ -11,7 +11,7 @@ COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
 RUN CMD /opt/mssql/bin/sqlservr 
-#EXPOSE 1433
+EXPOSE 1433
 #CMD /opt/mssql/bin/sqlservr
 #RUN  apt-get update
 #RUN apt-get update && apt-get install -y  apt-utils
