@@ -1,7 +1,12 @@
 FROM ubuntu:16.04 
 RUN apt-get update -y
 RUN apt-get install -y curl
-
+RUN apt-get install -y libunwind8
+RUN apt-get install -y libjemalloc1
+RUN apt-get install -y libc++1
+RUN apt-get install -y libcurl3
+RUN apt-get install -y python
+RUN apt-get install -y gdb
 #RUN apt-get install -y apt-transport-https
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y ca-certificates
@@ -16,12 +21,7 @@ RUN CMD /opt/mssql/bin/sqlservr
 #RUN  apt-get update
 #RUN apt-get update && apt-get install -y  apt-utils
 #RUN apt-get install -y wget
-#RUN apt-get install -y libunwind8
-#RUN apt-get install -y libjemalloc1
-#RUN apt-get install -y libc++1
-#RUN apt-get install -y libcurl3
-#RUN apt-get install -y python
-#RUN apt-get install -y gdb
+
 
 # Install prerequisites
 #RUN apt-get update && apt-get install -y curl
