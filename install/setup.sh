@@ -27,25 +27,25 @@ then
 fi
 
 echo Adding Microsoft repositories...
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+ curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
-sudo add-apt-repository "${repoargs}"
+ add-apt-repository "${repoargs}"
 repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
-sudo add-apt-repository "${repoargs}"
+ add-apt-repository "${repoargs}"
 
 echo Running apt-get update -y...
-sudo apt-get update -y
+ apt-get update -y
 
 echo Installing SQL Server...
-sudo apt-get install -y mssql-server
+ apt-get install -y mssql-server
 
 echo Running mssql-conf setup...
-sudo MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
+ MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
      MSSQL_PID=$MSSQL_PID \
      /opt/mssql/bin/mssql-conf -n setup accept-eula
 
 echo Installing mssql-tools and unixODBC developer...
-sudo ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
+ ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
 
 # Add SQL Server tools to the path by default:
 echo Adding SQL Server tools to your path...
@@ -56,20 +56,20 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 if [ ! -z $SQL_INSTALL_AGENT ]
 then
   echo Installing SQL Server Agent...
-  sudo apt-get install -y mssql-server-agent
+   apt-get install -y mssql-server-agent
 fi
 
 # Optional SQL Server Full Text Search installation:
 if [ ! -z $SQL_INSTALL_FULLTEXT ]
 then
     echo Installing SQL Server Full-Text Search...
-    sudo apt-get install -y mssql-server-fts
+     apt-get install -y mssql-server-fts
 fi
 
 # Configure firewall to allow TCP port 1433:
 echo Configuring UFW to allow traffic on port 1433...
-sudo ufw allow 1433/tcp
-sudo ufw reload
+ ufw allow 1433/tcp
+ ufw reload
 
 # Optional example of post-installation configuration.
 # Trace flags 1204 and 1222 are for deadlock tracing.
@@ -78,7 +78,7 @@ sudo ufw reload
 
 # Restart SQL Server after installing:
 echo Restarting SQL Server...
-sudo systemctl restart mssql-server
+ systemctl restart mssql-server
 
 # Connect to server and get the version:
 counter=1
