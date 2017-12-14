@@ -8,7 +8,7 @@ RUN apt-get install -y ca-certificates
 RUN dpkg -S add-apt-repository
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 #RUN 
-RUN  add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && sudo apt-get update
+RUN  add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" &&  apt-get update -y
 COPY ./install /
 RUN chmod +x setup.sh
 RUN ./setup.sh
