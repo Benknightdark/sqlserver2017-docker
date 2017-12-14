@@ -1,6 +1,7 @@
-FROM microsoft/mssql-server-linux
-COPY backup var/opt/mssql/data 
-#FROM ubuntu:16.04 
+FROM ubuntu:16.04 
+COPY ./install /
+RUN chmod +x setup.sh
+RUN ./setup.sh
 #EXPOSE 1433
 #CMD /opt/mssql/bin/sqlservr
 #RUN  apt-get update
