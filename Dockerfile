@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 RUN apt-get update
 RUN apt-get install -y curl
 
-RUN apt-get install -y apt-transport-https
+#RUN apt-get install -y apt-transport-https
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y ca-certificates
 RUN dpkg -S add-apt-repository
