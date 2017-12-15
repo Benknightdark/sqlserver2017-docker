@@ -8,5 +8,5 @@ RUN  apt-get install -y mssql-tools
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
 COPY /db /var/opt/mssql/data/
-
+EXPOSE 1433
 #CMD /opt/mssql/bin/sqlserver
